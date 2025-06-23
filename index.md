@@ -68,7 +68,7 @@ void loop() {
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
 | CanaKit Raspberry Pi 4 4GB Starter PRO Kit - 4GB RAM | everything needed to use raspberry pi, use raspberry pi to run models | $119.99 | <a href="https://www.amazon.com/CanaKit-Raspberry-4GB-Starter-Kit/dp/B07V5JTMV9"> Link </a> |
-| Adafruit BrainCraft HAT | display + i/o for raspberry pi | 44.99 | <a href="https://www.adafruit.com/product/4374"> Link </a> |
+| Adafruit BrainCraft HAT | display + i/o for raspberry pi | $44.99 | <a href="https://www.adafruit.com/product/4374"> Link </a> |
 | Raspberry Pi Camera Module 3 | camera for input, to detect objects | $29.99 | <a href="https://www.adafruit.com/product/5657?src=raspberrypi"> Link </a> |
 
 <!---# Other Resources/Examples

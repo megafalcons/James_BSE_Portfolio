@@ -8,7 +8,7 @@
 
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
-<img src="JamesD.PNG" width="20%" alt="James Dai">
+<img src="JamesD.png" width="20%" alt="James Dai">
   
 <!---# Final Milestone
 

@@ -90,5 +90,7 @@ For starter project, I started the project with a prebuilt board and identifiabl
 **Materials List**
 
 PCB, LED
-total cost: 7.99 (Linked <a href="https://www.adafruit.com/product/5657?src=raspberrypi"> Here </a>)
+total cost: 7.99 (Linked <a href="https://www.adafruit.com/product/5657?src=raspberrypi">Here</a>)
+
+<img src="parts.jpg" width="50%" alt="rgb light">
 

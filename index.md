@@ -1,12 +1,10 @@
 # Custom Object Detection System
-
+description coming soon (eta: September 2025)
 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | James Dai | Lynbrook High School | Computer Science | Incoming Senior
-
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 <img src="JamesD.png" width="20%" alt="James Dai">
   

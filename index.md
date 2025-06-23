@@ -1,6 +1,7 @@
 # Custom Object Detection System
 
 
+
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | James Dai | Lynbrook High School | Computer Science | Incoming Senior
@@ -63,8 +64,6 @@ void loop() {
 ```
 
 # Bill of Materials
-Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
-Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
@@ -80,9 +79,11 @@ One of the best parts about Github is that you can view how other people set up 
 
 # Starter Project: RGB Light
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://youtu.be/gTf-hnk4Yms?si=1otY-bS8eJ0_DbAi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-For starter projet, I started the project with a prebuilt board and identifiable parts. I then soldered on the correct parts to the correct location. As a final result, I was able to produce a board with a controllable rgb light, which was able to be controlled by three seperate sliders. I learned more about soldering, as well as more regarding power input in devices, as due to the low resistance, my board was unable to take power input from some variations of usbc cables. 
+**About the Project**
+
+For starter project, I started the project with a prebuilt board and identifiable parts. I then soldered on the correct parts to the correct location. As a final result, I was able to produce a board with a controllable rgb light, which was able to be controlled by three seperate sliders. I learned more about soldering, as well as more regarding power input in devices, as due to the low resistance, my board was unable to take power input from some variations of usbc cables. 
+
+
 

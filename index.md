@@ -18,21 +18,97 @@ For your final milestone, explain the outcome of your project. Key details to in
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE
+- What you hope to learn in the future after everything you've learned at BSE -->
 
 
 
 # Second Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
-- Technical details of what you've accomplished and how they contribute to the final goal
-- What has been surprising about the project so far
-- Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone  -->
+For my second milestone, I was able to build my own model from a dataset that I found online. I also wrote my own script to run the model on both my pi and my personal computer, taking input from either my webcam, my phone's camera, or my raspberry pi camera. This is good because now i can work on testing and training models at home, using my phone as the camera. My next milestone will include me training my own model with my own dataset, which I will create using computer parts I have at home. The current model I have only has 80% test accuracy, so I'm hoping that my own dataset will be able to reach 90-95%. Some challenges that I've faced so far was setting up the environment for the raspberry pi, especially since I wanted to run everything on a virtual environment on the pi, so I needed to change a lot of settings that I've never touched before. Also, it was difficult to find a large enough dataset with the objects I was looking for, so this also is why I want to switch to using my own dataset. 
+
+```python (code for pi) 
+
+from picamera2 import Picamera2
+import cv2
+import numpy as np
+from tflite_runtime.interpreter import Interpreter
+from PIL import Image
+import time
+
+# --- Load labels from file ---
+def load_labels(label_path):
+    with open(label_path, 'r') as f:
+        return [line.strip() for line in f.readlines()]
+
+# --- Set the input tensor for the interpreter ---
+def set_input_tensor(interpreter, image):
+    input_details = interpreter.get_input_details()[0]
+    interpreter.set_tensor(input_details['index'], image)
+
+# --- Run inference and return top result ---
+def classify_image(interpreter, image):
+    set_input_tensor(interpreter, image)
+    interpreter.invoke()
+
+    output_details = interpreter.get_output_details()[0]
+    output = interpreter.get_tensor(output_details['index'])[0]
+
+    top_result = np.argmax(output)
+    return top_result, output[top_result]
+
+# --- Setup paths ---
+MODEL_PATH = "pc1Stuff/skibPC.tflite"
+LABEL_PATH = "pc1Stuff/labels.txt"
+
+# --- Load model and allocate tensors ---
+interpreter = Interpreter(MODEL_PATH)
+interpreter.allocate_tensors()
+input_details = interpreter.get_input_details()
+_, height, width, _ = input_details[0]['shape']
+
+# --- Load labels ---
+labels = load_labels(LABEL_PATH)
+
+# --- Initialize Picamera2 ---
+picam2 = Picamera2()
+picam2.preview_configuration.main.size = (800, 800)
+picam2.preview_configuration.main.format = "RGB888"
+picam2.configure("preview")
+picam2.start()
+
+# --- Main loop ---
+print("Starting camera inference. Press 'q' to quit.")
+while True:
+    frame = picam2.capture_array()
+
+    # Preprocess frame for model
+    image = cv2.resize(frame, (width, height))
+    # image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    image = image.astype(np.float32) / 255.0
+    image = np.expand_dims(image, axis=0)
+
+
+    label_id, prob = classify_image(interpreter, image)
+    label_text = f"{labels[label_id]} ({prob:.2f})"
+
+    # Display result on image
+    if prob > 0.7:
+
+        cv2.putText(frame, f"{label_text}", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+
+    cv2.imshow("Picamera2 - TFLite Classification", frame)
+    
+    if cv2.waitKey(25) & 0xFF == ord('q'):
+        break
+    
+    
+
+cv2.destroyAllWindows()
+picam2.stop()
+```
 
 # First Milestone
 

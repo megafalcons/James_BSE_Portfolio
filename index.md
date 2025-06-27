@@ -24,7 +24,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 # Second Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AT3OThnL8Xg?si=XgJBNM3p1HWhB1Vl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 For my second milestone, I was able to build my own model from a dataset that I found online. I also wrote my own script to run the model on both my pi and my personal computer, taking input from either my webcam, my phone's camera, or my raspberry pi camera. This is good because now i can work on testing and training models at home, using my phone as the camera. My next milestone will include me training my own model with my own dataset, which I will create using computer parts I have at home. The current model I have only has 80% test accuracy, so I'm hoping that my own dataset will be able to reach 90-95%. Some challenges that I've faced so far was setting up the environment for the raspberry pi, especially since I wanted to run everything on a virtual environment on the pi, so I needed to change a lot of settings that I've never touched before. Also, it was difficult to find a large enough dataset with the objects I was looking for, so this also is why I want to switch to using my own dataset. 
 

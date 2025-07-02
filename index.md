@@ -1,5 +1,5 @@
 # Custom Object Detection System
-This project is able to detect different custom objects (pc parts), identifying their presence and also classifying them into 10 different classes. The project is implemented on a raspberry pi, using the picamera as an input. 
+This project is able to detect different custom objects (pc parts), identifying their presence and also classifying them into 10 different classes. The project is implemented on a Raspberry pi, using the picamera as an input. 
 full description coming soon (eta: September 2025)
 
 
@@ -27,16 +27,19 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AT3OThnL8Xg?si=XgJBNM3p1HWhB1Vl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-For my second milestone, I was able to build my own model from a dataset that I found online. I also wrote my own script to run the model on both my pi and my personal computer, taking input from either my webcam, my phone's camera, or my raspberry pi camera. This is good because now i can work on testing and training models at home, using my phone as the camera. My next milestone will include me training my own model with my own dataset, which I will create using computer parts I have at home. The current model I have only has 80% test accuracy, so I'm hoping that my own dataset will be able to reach 90-95%. Some challenges that I've faced so far was setting up the environment for the raspberry pi, especially since I wanted to run everything on a virtual environment on the pi, so I needed to change a lot of settings that I've never touched before. Also, it was difficult to find a large enough dataset with the objects I was looking for, so this also is why I want to switch to using my own dataset. 
+For my second milestone, I was able to build my own model from a dataset that I found online. I also wrote my own script to run the model on both my Piand my personal computer, taking input from either my webcam, my phone's camera, or my Raspberry Picamera. This is good because now i can work on testing and training models at home, using my phone as the camera. My next milestone will include me training my own model with my own dataset, which I will create using computer parts I have at home. The current model I have only has 80% test accuracy, so I'm hoping that my own dataset will be able to reach 90-95%. 
 
-# Script for the Pi:
+Some challenges that I've faced so far was setting up the environment for the Raspberry pi, especially since I wanted to run everything on a virtual environment on the pi, so I needed to change a lot of settings that I've never touched before. It was also difficult installing required dependancies and libraries onto the venv, instead of the root user. Also, it was difficult to find a large enough dataset with the objects I was looking for, so this also is why I want to switch to using my own dataset. 
+
+
+# Script for the pi:
 ```python 
 
-from picamera2 import Picamera2
+from picamera2 import picamera2
 import cv2
 import numpy as np
 from tflite_runtime.interpreter import Interpreter
-from PIL import Image
+from piL import Image
 import time
 
 # --- Load labels from file ---
@@ -73,8 +76,8 @@ _, height, width, _ = input_details[0]['shape']
 # --- Load labels ---
 labels = load_labels(LABEL_PATH)
 
-# --- Initialize Picamera2 ---
-picam2 = Picamera2()
+# --- Initialize picamera2 ---
+picam2 = picamera2()
 picam2.preview_configuration.main.size = (800, 800)
 picam2.preview_configuration.main.format = "RGB888"
 picam2.configure("preview")
@@ -101,7 +104,7 @@ while True:
         cv2.putText(frame, f"{label_text}", (10, 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
 
-    cv2.imshow("Picamera2 - TFLite Classification", frame)
+    cv2.imshow("picamera2 - TFLite Classification", frame)
     
     if cv2.waitKey(25) & 0xFF == ord('q'):
         break
@@ -119,8 +122,8 @@ picam2.stop()
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ByPvWhVvbA4?si=cmk9u-pumLP6hcHj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-My project consists of a raspberry pi with a camera and display, intending to detect custom object. The display will show what the camera is currently watching, and also show what the model identifies the object that is currently detected as. I have assembled the raspberry pi, display, and camera, and have confirmed that the default model (made for generic objects) works. 
-I have implemented a generic tensorflow model, which is able to detect objects such as water bottles, notebooks, and plastic bags. I will later build my own model using my own data for objects such as screws and fans. So far, I had a few challenges regarding using SSH to connect to the Raspberry PI, but figured out that it was because of the wifi I was connected to. 
+My project consists of a Raspberry Piwith a camera and display, intending to detect custom object. The display will show what the camera is currently watching, and also show what the model identifies the object that is currently detected as. I have assembled the Raspberry pi, display, and camera, and have confirmed that the default model (made for generic objects) works. 
+I have implemented a generic tensorflow model, which is able to detect objects such as water bottles, notebooks, and plastic bags. I will later build my own model using my own data for objects such as screws and fans. So far, I had a few challenges regarding using SSH to connect to the Raspberry pi, but figured out that it was because of the wifi I was connected to. 
 
 <!---# Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
@@ -145,9 +148,9 @@ void loop() {
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| CanaKit Raspberry Pi 4 4GB Starter PRO Kit - 4GB RAM | everything needed to use raspberry pi, use raspberry pi to run models | $119.99 | <a href="https://www.amazon.com/CanaKit-Raspberry-4GB-Starter-Kit/dp/B07V5JTMV9"> Link </a> |
-| Adafruit BrainCraft HAT | display + i/o for raspberry pi | $44.99 | <a href="https://www.adafruit.com/product/4374"> Link </a> |
-| Raspberry Pi Camera Module 3 | camera for input, to detect objects | $29.99 | <a href="https://www.adafruit.com/product/5657?src=raspberrypi"> Link </a> |
+| CanaKit Raspberry Pi4 4GB Starter PRO Kit - 4GB RAM | everything needed to use Raspberry pi, use Raspberry Pito run models | $119.99 | <a href="https://www.amazon.com/CanaKit-Raspberry-4GB-Starter-Kit/dp/B07V5JTMV9"> Link </a> |
+| Adafruit BrainCraft HAT | display + i/o for Raspberry Pi| $44.99 | <a href="https://www.adafruit.com/product/4374"> Link </a> |
+| Raspberry PiCamera Module 3 | camera for input, to detect objects | $29.99 | <a href="https://www.adafruit.com/product/5657?src=raspberrypi"> Link </a> |
 
 <!---# Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.

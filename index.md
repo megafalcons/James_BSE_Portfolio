@@ -1,5 +1,5 @@
 # Custom Object Detection System
-This project is able to detect different custom objects (pc parts), identifying their presence and also classifying them into 10 different classes. The project is implemented on a Raspberry pi, using the picamera as an input. 
+This project is able to detect different custom objects (pc parts), identifying their presence and also classifying them into 10 different classes. The project is implemented on a Raspberry Pi, using the picamera as an input. 
 full description coming soon (eta: September 2025)
 
 
@@ -27,12 +27,12 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AT3OThnL8Xg?si=XgJBNM3p1HWhB1Vl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-For my second milestone, I was able to build my own model from a dataset that I found online. I also wrote my own script to run the model on both my Piand my personal computer, taking input from either my webcam, my phone's camera, or my Raspberry Picamera. This is good because now i can work on testing and training models at home, using my phone as the camera. My next milestone will include me training my own model with my own dataset, which I will create using computer parts I have at home. The current model I have only has 80% test accuracy, so I'm hoping that my own dataset will be able to reach 90-95%. 
+For my second milestone, I was able to build my own model from a dataset that I found online. I also wrote my own script to run the model on both my Piand my personal computer, taking input from either my webcam, my phone's camera, or my Raspberry Pi's camera. This is good because now i can work on testing and training models at home, using my phone as the camera. My next milestone will include me training my own model with my own dataset, which I will create using computer parts I have at home. The current model I have only has 80% test accuracy, so I'm hoping that my own dataset will be able to reach 90-95%. 
 
-Some challenges that I've faced so far was setting up the environment for the Raspberry pi, especially since I wanted to run everything on a virtual environment on the pi, so I needed to change a lot of settings that I've never touched before. It was also difficult installing required dependancies and libraries onto the venv, instead of the root user. Also, it was difficult to find a large enough dataset with the objects I was looking for, so this also is why I want to switch to using my own dataset. 
+Some challenges that I've faced so far was setting up the environment for the Raspberry Pi, especially since I wanted to run everything on a virtual environment on the pi, so I needed to change a lot of settings that I've never touched before. It was also difficult installing required dependancies and libraries onto the venv, instead of the root user. Also, it was difficult to find a large enough dataset with the objects I was looking for, so this also is why I want to switch to using my own dataset. 
 
 
-# Script for the pi:
+# Script for the Pi:
 ```python 
 
 from picamera2 import picamera2
@@ -122,8 +122,8 @@ picam2.stop()
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ByPvWhVvbA4?si=cmk9u-pumLP6hcHj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-My project consists of a Raspberry Piwith a camera and display, intending to detect custom object. The display will show what the camera is currently watching, and also show what the model identifies the object that is currently detected as. I have assembled the Raspberry pi, display, and camera, and have confirmed that the default model (made for generic objects) works. 
-I have implemented a generic tensorflow model, which is able to detect objects such as water bottles, notebooks, and plastic bags. I will later build my own model using my own data for objects such as screws and fans. So far, I had a few challenges regarding using SSH to connect to the Raspberry pi, but figured out that it was because of the wifi I was connected to. 
+My project consists of a Raspberry Pi with a camera and display, intending to detect custom object. The display will show what the camera is currently watching, and also show what the model identifies the object that is currently detected as. I have assembled the Raspberry Pi, display, and camera, and have confirmed that the default model (made for generic objects) works. 
+I have implemented a generic tensorflow model, which is able to detect objects such as water bottles, notebooks, and plastic bags. I will later build my own model using my own data for objects such as screws and fans. So far, I had a few challenges regarding using SSH to connect to the Raspberry Pi, but figured out that it was because of the wifi I was connected to. 
 
 <!---# Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 

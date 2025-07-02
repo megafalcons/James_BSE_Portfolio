@@ -7,7 +7,7 @@ full description coming soon (eta: September 2025)
 |:--:|:--:|:--:|:--:|
 | James Dai | Lynbrook High School | Computer Science | Incoming Senior
 
-<img src="JamesD.png" width="25%" alt="James Dai">
+<img src="JamesD.png" width="40%" alt="James Dai">
   
 <!---# Final Milestone
 

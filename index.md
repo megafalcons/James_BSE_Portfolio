@@ -1,12 +1,13 @@
 # Custom Object Detection System
-description coming soon (eta: September 2025)
+This project is able to detect different custom objects (pc parts), identifying their presence and also classifying them into 10 different classes. The project is implemented on a raspberry pi, using the picamera as an input. 
+full description coming soon (eta: September 2025)
 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | James Dai | Lynbrook High School | Computer Science | Incoming Senior
 
-<img src="JamesD.png" width="20%" alt="James Dai">
+<img src="JamesD.png" width="25%" alt="James Dai">
   
 <!---# Final Milestone
 

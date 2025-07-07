@@ -11,7 +11,7 @@ full description coming soon (eta: September 2025)
   
 # Final Milestone
 
-<iframe width="560" height="315" src="https://youtu.be/gTf-hnk4Yms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dnV0DnuVvSA?si=OZ33bM7ePeD5j_b7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 For my final milestone, I was able to store images while using the model, to then later use to retrain the model for better results. After an object is detected, my script automatically saves the image after 3 seconds of detecting the same image. The model gives a prediction to what the image is classified as, and the user is able to manually adjust the classification when the model is incorrect. The image is then stored into a folder of the determined classification, and the script is then able to detect another object. After 100 objects are detected and classified, the script then sends the folders of images to a server hosted on my computer, which then can later be used to retrain the model. 
 

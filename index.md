@@ -19,6 +19,76 @@ This project allowed me to learn more about node js, tensorflow, and python, all
 
 Some challenges I faced when working on this milestone was with using python to save images, as well as using python to take input to manually adjust classification, as I was unfamiliar with python prior to this project. I had trouble using the correct libraries for these tasks, as I initially used some outdated libraries, or libraries that had other requirements (eg. keyboard, which required root user to use). Additionally, creating a GUI for the project failed because it was difficult efficiently implementing the picamera output to the GUI, since the way I did it was to take each frame, convert to the format that tkinter wanted, and then draw it on the GUI. Eventually, I just decided to use opencv to write text on the image, which was more effective, though more ugly. Another challenge I faced was with the Tensorflow .fit() function. Unfortunatly, this function was unable to be used on tensorflow lite, so this is why I sent the images to my server to then train my tensorflow model on the server, which I can then convert to a tflite model, and then send back to the Raspberry Pi. 
 
+#Sending files to Server Side:
+```js
+app.post('/upload-folder', upload.single('folderZip'), async (req, res) => {
+  const zipPath = req.file.path;
+  const extractTo = path.join(__dirname, 'extracted');
+
+  try {
+    // Ensure extract directory exists
+    fs.mkdirSync(extractTo, { recursive: true });
+
+    // Extract ZIP
+    fs.createReadStream(zipPath)
+      .pipe(unzipper.Extract({ path: extractTo }))
+      .on('close', () => {
+        console.log('Folder extracted to:', extractTo);
+        res.send('Folder received and extracted');
+      });
+  } catch (err) {
+    console.error('Error extracting zip:', err);
+    res.status(500).send('Failed to extract zip');
+  }
+});
+```
+
+#Script for Converting and Fitting the Model 
+```python
+
+import tensorflow as tf
+from keras.models import load_model
+import numpy as np
+from tensorflow.keras.models import load_model
+from tensorflow.keras.layers import DepthwiseConv2D
+
+class CustomDepthwiseConv2D(DepthwiseConv2D):
+    def __init__(self, *args, **kwargs):
+        kwargs.pop('groups', None)  # Strip out 'groups' if present
+        super().__init__(*args, **kwargs)
+
+# Use custom object scope
+with tf.keras.utils.custom_object_scope({'DepthwiseConv2D': CustomDepthwiseConv2D}):
+    model = load_model("model.h5")
+
+train_dataset = tf.keras.utils.image_dataset_from_directory(
+    "extracted",                 # root directory path
+    image_size=(224, 224),  # resize all images to this size
+    batch_size=16,          # how many images per training batch
+    label_mode='int',       # 'int', 'categorical', or 'binary'
+    shuffle=True
+)
+
+normalization_layer = tf.keras.layers.Rescaling(1./255)
+
+train_dataset = train_dataset.map(lambda x, y: (normalization_layer(x), y))
+
+for images, labels in train_dataset.take(1):
+    print(images.shape)  # (batch_size, 224, 224, 3)
+    print(labels.numpy())  # e.g., [0, 1, 1, 0, ...]
+
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+model.fit(train_dataset, epochs=10)
+
+model.save("model.h5")
+
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+tflite_model = converter.convert()
+with open("model.tflite", "wb") as f:
+    f.write(tflite_model)
+```
 
 # Second Milestone
 

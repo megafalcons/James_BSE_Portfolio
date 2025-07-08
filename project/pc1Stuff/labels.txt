@@ -1,0 +1,11 @@
+0 gpu
+1 cpu
+2 ram
+3 motherboard
+4 case
+5 psu
+6 aio
+7 air cooler
+8 ssd (sata)
+9 ssd (nvme)
+A background

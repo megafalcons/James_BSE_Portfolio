@@ -19,7 +19,7 @@ This project allowed me to learn more about node js, tensorflow, and python, all
 
 Some challenges I faced when working on this milestone was with using python to save images, as well as using python to take input to manually adjust classification, as I was unfamiliar with python prior to this project. I had trouble using the correct libraries for these tasks, as I initially used some outdated libraries, or libraries that had other requirements (eg. keyboard, which required root user to use). Additionally, creating a GUI for the project failed because it was difficult efficiently implementing the picamera output to the GUI, since the way I did it was to take each frame, convert to the format that tkinter wanted, and then draw it on the GUI. Eventually, I just decided to use opencv to write text on the image, which was more effective, though more ugly. Another challenge I faced was with the Tensorflow .fit() function. Unfortunatly, this function was unable to be used on tensorflow lite, so this is why I sent the images to my server to then train my tensorflow model on the server, which I can then convert to a tflite model, and then send back to the Raspberry Pi. 
 
-#Sending files to Server Side:
+# Sending files to Server Side:
 ```js
 app.post('/upload-folder', upload.single('folderZip'), async (req, res) => {
   const zipPath = req.file.path;
@@ -43,7 +43,7 @@ app.post('/upload-folder', upload.single('folderZip'), async (req, res) => {
 });
 ```
 
-#Script for Converting and Fitting the Model 
+# Script for Converting and Fitting the Model 
 ```python
 
 import tensorflow as tf

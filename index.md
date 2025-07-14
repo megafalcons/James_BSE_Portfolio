@@ -16,10 +16,10 @@ full description coming soon (eta: September 2025)
 ### About
 For my final milestone, I was able to store images while using the model, to then later use to retrain the model for better results. After an object is detected, my script automatically saves the image after 3 seconds of detecting the same image. The model gives a prediction to what the image is classified as, and the user is able to manually adjust the classification when the model is incorrect. The image is then stored into a folder of the determined classification, and the script is then able to detect another object. After 100 objects are detected and classified, the script then sends the folders of images to a server hosted on my computer, which then can later be used to retrain the model. 
 
-This project allowed me to learn more about node js, tensorflow, and python, allowing me to write files, run tensorflow models, and creating a server side that can then take post requests and parse the input. I hope to continue building onto this, eventually making the entire process fully automated, adding voice input to change classification, and also implementing this into an inventory management app.
+This project allowed me to learn more about Node JS, Tensorflow, and Python, allowing me to write files, run Tensorflow models, and creating a server side that can then take post requests and parse the input. I hope to continue building onto this, eventually making the entire process fully automated, adding voice input to change classification, and also implementing this into an inventory management app.
 
 ### Challenges
-Some challenges I faced when working on this milestone was with using python to save images, as well as using python to take input to manually adjust classification, as I was unfamiliar with python prior to this project. I had trouble using the correct libraries for these tasks, as I initially used some outdated libraries, or libraries that had other requirements (eg. keyboard, which required root user to use). Additionally, creating a GUI for the project failed because it was difficult efficiently implementing the picamera output to the GUI, since the way I did it was to take each frame, convert to the format that tkinter wanted, and then draw it on the GUI. Eventually, I just decided to use opencv to write text on the image, which was more effective, though more ugly. Another challenge I faced was with the Tensorflow .fit() function. Unfortunatly, this function was unable to be used on tensorflow lite, so this is why I sent the images to my server to then train my tensorflow model on the server, which I can then convert to a tflite model, and then send back to the Raspberry Pi. 
+Some challenges I faced when working on this milestone was with using python to save images, as well as using python to take input to manually adjust classification, as I was unfamiliar with Python prior to this project. I had trouble using the correct libraries for these tasks, as I initially used some outdated libraries, or libraries that had other requirements (eg. keyboard, which required root user to use). Additionally, creating a GUI for the project failed because it was difficult efficiently implementing the picamera output to the GUI, since the way I did it was to take each frame, convert to the format that tkinter wanted, and then draw it on the GUI. Eventually, I just decided to use opencv to write text on the image, which was more effective, though more ugly. Another challenge I faced was with the Tensorflow .fit() function. Unfortunatly, this function was unable to be used on Tensorflow Lite, so this is why I sent the images to my server to then train my Tensorflow model on the server, which I can then convert to a tflite model, and then send back to the Raspberry Pi. 
 
 ## Sending files to Server Side:
 ```js
@@ -185,7 +185,10 @@ while True:
 cv2.destroyAllWindows()
 picam2.stop()
 ```
-<img src="IMG_0180.jpg" width="40%" alt="pi">
+<figure>
+  <img src="IMG_0180.jpg" width = "40%" alt="pi">
+  <figcaption>Pi w/ camera device, used for taking video input and running the Tensorflow model</figcaption>
+</figure>
 
 
 # First Milestone

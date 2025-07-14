@@ -19,7 +19,7 @@ For my final milestone, I was able to store images while using the model, to the
 This project allowed me to learn more about Node JS, Tensorflow, and Python, allowing me to write files, run Tensorflow models, and creating a server side that can then take post requests and parse the input. I hope to continue building onto this, eventually making the entire process fully automated, adding voice input to change classification, and also implementing this into an inventory management app.
 
 ### Challenges
-Some challenges I faced when working on this milestone was with using python to save images, as well as using Python to take input to manually adjust classification, as I was unfamiliar with Python prior to this project. I had trouble using the correct libraries for these tasks, as I initially used some outdated libraries, or libraries that had other requirements (eg. keyboard, which required root user to use). Additionally, creating a GUI for the project failed because it was difficult efficiently implementing the picamera output to the GUI, since the way I did it was to take each frame, convert to the format that tkinter wanted, and then draw it on the GUI. Eventually, I just decided to use opencv to write text on the image, which was more effective, though more ugly. Another challenge I faced was with the Tensorflow .fit() function. Unfortunatly, this function was unable to be used on Tensorflow Lite, so this is why I sent the images to my server to then train my Tensorflow model on the server, which I can then convert to a tflite model, and then send back to the Raspberry Pi. 
+Some challenges I faced when working on this milestone was with using Python to save images, as well as using Python to take input to manually adjust classification, as I was unfamiliar with Python prior to this project. I had trouble using the correct libraries for these tasks, as I initially used some outdated libraries, or libraries that had other requirements (eg. keyboard, which required root user to use). Additionally, creating a GUI for the project failed because it was difficult efficiently implementing the picamera output to the GUI, since the way I did it was to take each frame, convert to the format that tkinter wanted, and then draw it on the GUI. Eventually, I just decided to use opencv to write text on the image, which was more effective, though more ugly. Another challenge I faced was with the Tensorflow .fit() function. Unfortunatly, this function was unable to be used on Tensorflow Lite, so this is why I sent the images to my server to then train my Tensorflow model on the server, which I can then convert to a tflite model, and then send back to the Raspberry Pi. 
 
 ## Sending files to Server Side:
 ```js
@@ -187,7 +187,7 @@ picam2.stop()
 ```
 <figure>
   <img src="IMG_0180.jpg" width = "40%" alt="pi">
-  <figcaption>Pi w/ camera device, used for taking video input and running the Tensorflow model</figcaption>
+  <figcaption style="font-size: 50; font-style: italic;">Pi w/ camera device, used for taking video input and running the Tensorflow model</figcaption>
 </figure>
 
 

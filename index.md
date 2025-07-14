@@ -186,7 +186,7 @@ cv2.destroyAllWindows()
 picam2.stop()
 ```
 <figure>
-  <img src="IMG_0180.jpg" style="transform: rotate(90deg);" width = "70%" alt="pi">
+  <img src="IMG_0180.jpg" style="transform: rotate(270deg);" width = "70%" alt="pi">
   <figcaption style="font-size: 50; font-style: italic; margin: 0;">Pi w/ camera device, used for taking video input and running the Tensorflow model</figcaption>
 </figure>
 

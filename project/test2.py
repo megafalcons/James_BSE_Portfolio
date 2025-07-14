@@ -9,25 +9,99 @@ import os
 import shutil
 import requests
 from pynput import keyboard
+import sqlite3
+import tkinter as tk
+root = tk.Tk()
+root.geometry("300x200")
+name_var=tk.StringVar()
+price_var=tk.StringVar()
+start = 1
+submitted = 0
+sub_name = ""
+sub_price = ""
+def submit():
+    global submitted
+    global sub_name
+    global sub_price
+    sub_name = str(name_var.get())
+    sub_price = str(price_var.get())
+    print(sub_name)
+    print(sub_price)
+    submitted = 100
+    name_var.set("")
+    price_var.set("")
 
-latest_key = None
+name_label = tk.Label(root, text = 'Item Name', font=('calibre',10, 'bold'))
 
+# creating a entry for input
+# name using widget Entry
+name_entry = tk.Entry(root,textvariable = name_var, font=('calibre',10,'normal'))
+
+# creating a label for password
+passw_label = tk.Label(root, text = 'Price', font = ('calibre',10,'bold'))
+
+# creating a entry for password
+passw_entry=tk.Entry(root, textvariable = price_var, font = ('calibre',10,'normal'))
+
+# creating a button using the widget
+# Button that will call the submit function
+sub_btn=tk.Button(root,text = 'Submit', command = submit)
+
+# placing the label and entry in
+# the required position using grid
+# method
+name_label.grid(row=0,column=0)
+name_entry.grid(row=0,column=1)
+passw_label.grid(row=1,column=0)
+passw_entry.grid(row=1,column=1)
+sub_btn.grid(row=2,column=1)
+
+# connecting to the database
+connection = sqlite3.connect("inventory.db")
+
+# cursor
+crsr = connection.cursor()
+'''
+sql_command = """CREATE TABLE inv (
+id_number INTEGER,
+category VARCHAR(20),
+product_name VARCHAR(255),
+status CHAR(1),
+price_paid INTEGER,
+price_sold INTEGER
+);"""
+
+crsr.execute(sql_command)
+'''
+# close the connection
+# connection.close()
+latest_key = ""
+ischar = False
 def on_press(key):
     global latest_key
+    global ischar
+    ischar = True
     try:
-        latest_key = key.char  # Alphanumeric keys
+        latest_key = key.char # Alphanumeric keys
+
     except AttributeError:
         latest_key = str(key)  # Special keys
+        ischar = False
     print(f"Key pressed: {latest_key}")
 
 def on_release(key):
     global latest_key
-    latest_key = None
+    latest_key = ""
+    ischar = False
     print("Key released")
 
 # Start the listener
 listener = keyboard.Listener(on_press=on_press, on_release=on_release)
 listener.start()
+
+def capture(state, userdata):
+    global confirm
+    confirm = 67
 
 # --- Load labels from file ---
 def load_labels(label_path):
@@ -77,7 +151,23 @@ currentObj = -1
 actualObj = -1
 hasObj = False
 time.sleep(4)
-while True:
+name = ""
+#cv2.namedWindow("Picamera2 - TFLite Classification")
+
+def main():
+    global submitted
+    global active
+    global confirm
+    global currentObj
+    global actualObj
+    global hasObj
+    global width
+    global height
+    global interpreter
+    global crsr
+    global sub_name
+    global sub_price
+
     if active:
         frame = picam2.capture_array()
         # frame2 = frame
@@ -123,7 +213,7 @@ while True:
 
     elif hasObj:
         frame = cv2.imread('temp/temp.png')
-        print(latest_key)
+        #print(latest_key)
 
         if latest_key == '.' and currentObj < len(labels)-1:
             currentObj += 1
@@ -207,7 +297,39 @@ while True:
 
     else:
         frame = cv2.imread('skibidi.png')
-        if latest_key == 'Key.space':
+        '''
+        print(name)
+        cv2.putText(frame, f"{name}", (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+        if ischar:
+            print(latest_key + "bruh")
+            print(ischar)
+            name += latest_key
+
+        if latest_key == 'Key.backspace':
+            name = name[:-1]
+        '''
+        #print(str(submitted) + "submitted value")
+        #print(sub_name)
+        #print (sub_price)
+        if submitted == 100:
+            print("hello world")
+            sql_command = """INSERT INTO inv
+            VALUES ( 1, '""" + labels[currentObj] + """','""" + sub_name + """', 'a',""" + sub_price + """,""" + """-1);"""
+
+            print(sql_command)
+            crsr.execute(sql_command)
+            connection.commit()
+
+            sql_command = """SELECT * FROM inv;"""
+            crsr.execute(sql_command)
+            ans = crsr.fetchall()
+            print("y is this so annoying")
+            for i in ans:
+                print(i)
+                print ("this is the db")
+            submitted = 0
+        if latest_key == 'Key.enter':
             active = True
 
 
@@ -215,11 +337,21 @@ while True:
 
 
 
+
+    #cv2.createButton("Click Me", capture, None, cv2.QT_PUSH_BUTTON, 1)
     cv2.imshow("Picamera2 - TFLite Classification", frame)
+
 
 
     if cv2.waitKey(25) & 0xFF == ord('q'):
         cheese = 1
         cv2.destroyAllWindows()
         picam2.stop()
-        break
+        connection.close()
+
+    else:
+        root.after(1, main)
+
+root.after(1000, main)
+root.mainloop()
+connection.close()

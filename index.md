@@ -1,6 +1,5 @@
-# Custom Object Detection System
-This project is able to detect different custom objects (pc parts), identifying their presence and also classifying them into 10 different classes. The project is implemented on a Raspberry Pi, using the picamera as an input. 
-full description coming soon (eta: September 2025)
+# Inventory Management System w/ Custom Object Detection System
+This project is able to detect different custom objects (pc parts), identifying their presence and also classifying them into 10 different classes. The project is implemented on a Raspberry Pi, using the picamera as an input. After classification, the user is able to manual input the specific name of the object, as well as the price, and insert the object into a database, which is able to be moved around into builds, which are then able to print build cost and material lists for a specific build. 
 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
@@ -8,7 +7,10 @@ full description coming soon (eta: September 2025)
 | James Dai | Lynbrook High School | Computer Science | Incoming Senior
 
 <img src="JamesD.png" width="40%" alt="James Dai">
-  
+
+# Modifications
+For my modifications, I implemented a system to take the classification given as input, as well as allowing the user to manually input the specific name of the object, and the price of the object. These objects are put into a local SQL database, where they can be placed into seperate builds. Builds contain one object from each classification, and can be changed after creating a build. Each build is also able to generate a materials list, including prices objects in the build. When a build is sold, it is able to be marked as sold, with a manual input for sale price. Currently, the GUI for all of these functions is very messy and ugly, but I plan on improving the GUI as my next step. 
+
 # Final Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dnV0DnuVvSA?si=OZ33bM7ePeD5j_b7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

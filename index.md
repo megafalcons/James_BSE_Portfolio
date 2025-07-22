@@ -1,4 +1,4 @@
-# Inventory Management System w/ Custom Object Detection System
+# Inventory Tracker w/ Custom Object Detection System
 This project is able to detect different custom objects (pc parts), identifying their presence and also classifying them into 10 different classes. The project is implemented on a Raspberry Pi, using the picamera as an input. After classification, the user is able to manual input the specific name of the object, as well as the price, and insert the object into a database, which is able to be moved around into builds, which are then able to print build cost and material lists for a specific build. 
 
 
@@ -10,6 +10,16 @@ This project is able to detect different custom objects (pc parts), identifying 
 
 # Modifications
 For my modifications, I implemented a system to take the classification given as input, as well as allowing the user to manually input the specific name of the object, and the price of the object. These objects are put into a local SQL database, where they can be placed into seperate builds. Builds contain one object from each classification, and can be changed after creating a build. Each build is also able to generate a materials list, including prices objects in the build. When a build is sold, it is able to be marked as sold, with a manual input for sale price. Currently, the GUI for all of these functions is very messy and ugly, but I plan on improving the GUI as my next step. 
+
+<figure>
+  <img src="proj1.png" width = "45%" alt="pi">
+  <figcaption style="font-size: 50; font-style: italic; margin: 0;">inserting object into system + GUI of the project</figcaption>
+</figure>
+
+<figure>
+  <img src="proj2.png" width = "45%" alt="pi">
+  <figcaption style="font-size: 50; font-style: italic; margin: 0;">current output of project, materials list + debug items</figcaption>
+</figure>
 
 # Final Milestone
 

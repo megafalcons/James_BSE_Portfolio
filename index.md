@@ -208,8 +208,15 @@ picam2.stop()
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ByPvWhVvbA4?si=cmk9u-pumLP6hcHj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+## About
+
 My project consists of a Raspberry Pi with a camera and display, intending to detect custom object. The display will show what the camera is currently watching, and also show what the model identifies the object that is currently detected as. I have assembled the Raspberry Pi, display, and camera, and have confirmed that the default model (made for generic objects) works. 
-I have implemented a generic tensorflow model, which is able to detect objects such as water bottles, notebooks, and plastic bags. I will later build my own model using my own data for objects such as screws and fans. So far, I had a few challenges regarding using SSH to connect to the Raspberry Pi, but figured out that it was because of the wifi I was connected to. 
+I have implemented a generic tensorflow model, which is able to detect objects such as water bottles, notebooks, and plastic bags. I will later build my own model using my own data for objects such as screws and fans. I want to use a dataset from an online resource to train the model, and use teachable machine to do so. Additionally, I want to my own images as well, to better understand what images are good for training models.
+
+## Challenges 
+
+So far, I had a few challenges regarding using SSH to connect to the Raspberry Pi, but figured out that it was because of the wifi I was connected to. 
+
 
 <!---# Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
